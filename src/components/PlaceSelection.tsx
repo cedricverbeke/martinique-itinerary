@@ -54,17 +54,19 @@ export default function PlaceSelection({ selectedPlaces, onTogglePlace, onNext }
 
       {/* Filters */}
       <div className="sticky top-0 z-30 border-b border-slate-200 bg-white/80 backdrop-blur-lg">
-        <div className="mx-auto max-w-7xl px-6 py-4">
-          <div className="flex flex-wrap items-center gap-2">
+        <div className="mx-auto max-w-7xl px-4 py-2.5 sm:px-6 sm:py-4">
+          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide sm:flex-wrap sm:gap-2">
             <button
               onClick={() => setActiveCategory('Toutes')}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition-all ${
+              title="Toutes les catégories"
+              className={`flex flex-shrink-0 items-center gap-2 rounded-full py-2 text-sm font-semibold transition-all ${
                 activeCategory === 'Toutes'
                   ? 'bg-slate-900 text-white shadow-md'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
+              } px-3 sm:px-4`}
             >
-              Toutes ({PLACES.length})
+              <span className="text-xs font-bold sm:text-sm">Toutes</span>
+              <span className="hidden sm:inline">({PLACES.length})</span>
             </button>
             {CATEGORIES.map((cat) => {
               const Icon = ICON_MAP[cat];
@@ -73,14 +75,16 @@ export default function PlaceSelection({ selectedPlaces, onTogglePlace, onNext }
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all ${
+                  title={cat}
+                  className={`flex flex-shrink-0 items-center gap-2 rounded-full py-2 text-sm font-semibold transition-all ${
                     activeCategory === cat
                       ? 'bg-slate-900 text-white shadow-md'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
+                  } px-2.5 sm:px-4`}
                 >
-                  <Icon className="h-4 w-4" />
-                  {cat} ({count})
+                  <Icon className="h-4 w-4 flex-shrink-0" />
+                  <span className="hidden lg:inline">{cat}</span>
+                  <span className="hidden lg:inline">({count})</span>
                 </button>
               );
             })}
