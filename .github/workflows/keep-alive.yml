@@ -1,0 +1,34 @@
+name: Edge Function Keep-Alive
+
+on:
+  schedule:
+    # S'exécute tous les 3 jours à minuit
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  ping-supabase-function:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Supabase Edge Function
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          # On construit l'URL dynamiquement grâce au secret URL
+          FULL_URL="${SUPABASE_URL}/functions/v1/generate-itinerary"
+          
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "$FULL_URL" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{}")
+
+          echo "Code de retour HTTP : $RESPONSE"
+
+          if [ "$RESPONSE" -ge 500 ]; then
+            echo "Erreur serveur critique sur l Edge Function."
+            exit 1
+          else
+            echo "Edge Function contactée et réveillée avec succès !"
+          fi
