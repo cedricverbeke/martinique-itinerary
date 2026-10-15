@@ -1,6 +1,14 @@
 import { Check, Plus, Clock, Euro, MapPin, Info } from 'lucide-react';
 import type { Place } from '@/data/places';
 
+function getImageUrl(image: Place['image']): string {
+  return typeof image === 'string' ? image : image.url;
+}
+
+function getImageAlt(image: Place['image'], placeName: string): string {
+  return typeof image === 'string' ? placeName : image.alt;
+}
+
 interface PlaceCardProps {
   place: Place;
   selected: boolean;
@@ -17,8 +25,8 @@ export default function PlaceCard({ place, selected, onToggle, onDetails }: Plac
     >
       <div className="relative h-48 overflow-hidden">
         <img
-          src={place.image}
-          alt={place.nom}
+          src={getImageUrl(place.image)}
+          alt={getImageAlt(place.image, place.nom)}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
           loading="lazy"
         />

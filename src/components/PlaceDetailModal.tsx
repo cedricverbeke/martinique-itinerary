@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { X, MapPin, Clock, Euro, Gauge, Sun, Calendar, CheckCircle2, AlertCircle, Info } from 'lucide-react';
 import type { Place } from '@/data/places';
 
+function getImageUrl(image: Place['image']): string {
+  return typeof image === 'string' ? image : image.url;
+}
+
+function getImageAlt(image: Place['image'], placeName: string): string {
+  return typeof image === 'string' ? placeName : image.alt;
+}
+
 interface PlaceDetailModalProps {
   place: Place;
   onClose: () => void;
@@ -10,6 +18,7 @@ interface PlaceDetailModalProps {
 const BEST_TIME_LABELS: Record<string, string> = {
   matin: 'Matin (recommandé)',
   apresMidi: 'Après-midi',
+  midi: 'Midi',
   soir: 'Soir',
   any: 'Toute la journée',
 };
@@ -40,8 +49,8 @@ export default function PlaceDetailModal({ place, onClose }: PlaceDetailModalPro
         {/* Main image */}
         <div className="relative h-72 overflow-hidden">
           <img
-            src={allImages[activeImage]}
-            alt={place.nom}
+            src={getImageUrl(allImages[activeImage])}
+            alt={getImageAlt(allImages[activeImage], place.nom)}
             className="h-full w-full object-cover transition-opacity duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
@@ -71,7 +80,11 @@ export default function PlaceDetailModal({ place, onClose }: PlaceDetailModalPro
                   : 'opacity-60 hover:opacity-100'
               }`}
             >
-              <img src={img} alt={`${place.nom} ${i + 1}`} className="h-full w-full object-cover" />
+              <img
+                src={getImageUrl(img)}
+                alt={getImageAlt(img, `${place.nom} ${i + 1}`)}
+                className="h-full w-full object-cover"
+              />
             </button>
           ))}
         </div>

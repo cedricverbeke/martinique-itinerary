@@ -8,6 +8,11 @@ export type Category =
 
 export type Zone = 'Nord Caraïbe' | 'Sud Caraïbe' | 'Nord Atlantique' |'Sud Atlantique' | 'Centre';
 
+export interface ImageData {
+  url: string;
+  alt: string;
+}
+
 export interface Place {
   id: string;
   nom: string;
@@ -15,11 +20,11 @@ export interface Place {
   zone: Zone;
   description: string;
   descriptionLongue: string;
-  galerie: string[];
+  galerie: ImageData[];
   niveauEffort: number; // 1-5
   dureeMoyenne: string;
   costEstimate: string;
-  image: string;
+  image: ImageData;
   bestTimeOfDay: 'matin' | 'apresMidi' |'midi' | 'soir' | 'any';
 }
 
@@ -59,14 +64,14 @@ export const PLACES: Place[] = [
     description: "La plage la plus célèbre de Martinique, carte postale par excellence avec son sable blanc et ses cocotiers. Eaux turquoises peu profondes, idéale pour les familles.",
     descriptionLongue: "Les Salines est sans conteste la plage la plus emblématique de Martinique. Ce lagon turquoise aux eaux peu profondes s'étire sur plus d'un kilomètre, bordé de cocotiers penchés vers la mer. Le sable, d'un blanc immaculé, contraste avec le vert intense de la végétation tropicale environnante. La plage est protégée par un récif corallien qui calme les vagues, créant un environnement parfait pour les familles avec enfants. Quelques snack-bars locaux proposent des plats créoles et des rafraîchissements. Le site peut être très fréquenté en haute saison, d'où l'importance d'arriver tôt le matin. Une balade à pied jusqu'à la pointe sud offre une vue spectaculaire sur l'ensemble de la baie.",
     galerie: [
-      '/assets/les salines aerial.jpg',
-      '/assets/les salines baigneuse.jpg',
-      '/assets/les salines drone.jpg',
+      { url: '/assets/les salines aerial.jpg', alt: 'Vue aérienne panoramique de la plage des Salines à Sainte-Anne en Martinique' },
+      { url: '/assets/les salines baigneuse.jpg', alt: 'Baignade dans les eaux turquoises et calmes de la plage des Salines' },
+      { url: '/assets/les salines drone.jpg', alt: 'Vue par drone du lagon et des cocotiers des Salines en Martinique' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '3h',
     costEstimate: 'Gratuit',
-    image: '/assets/les salines.jpg',
+    image: { url: '/assets/les salines.jpg', alt: 'La célèbre plage de sable blanc des Salines et ses cocotiers en Martinique' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -77,14 +82,14 @@ export const PLACES: Place[] = [
     description: "Deux criques voisines aux contrastes saisissants : sable noir volcanique à Anse Noire, sable blanc à Anse Dufour. Spot de snorkeling réputé avec tortues marines.",
     descriptionLongue: "Anse Noire et Anse Dufour sont deux petites plages situées aux Anses-d'Arlet, accessibles par un chemin étroit à travers un quartier de pêcheurs. Anse Noire surprend par son sable noir d'origine volcanique, un phénomène rare en Martinique où la plupart des plages du sud sont blanches. Anse Dufour, juste à côté, offre un sable clair et des eaux calmes abritées par la pointe rocheuse. C'est l'un des meilleurs spots de snorkeling de l'île : tortues marines, poissons-perroquets, oursins et coraux peuplent les herbiers marins peu profonds. Les tortues vertes viennent s'y nourir d'algues et de phanérogames. Apportez masque et tuba, la location de matériel est limitée sur place. Le site est préservé et convient parfaitement à une matinée de découverte.",
     galerie: [
-      '/assets/anse noire drone.jpg',
-      '/assets/anse noire femme assise paysage.jpg',
-      '/assets/anse noire femme cocotier.jpg',      
+      { url: '/assets/anse noire drone.jpg', alt: 'Vue par drone de la crique de sable noir à Anse Noire aux Anses-d Arlet' },
+      { url: '/assets/anse noire femme assise paysage.jpg', alt: 'Paysage volcanique et détente à Anse Noire en Martinique' },
+      { url: '/assets/anse noire femme cocotier.jpg', alt: 'Cocotier et sable noir volcanique à Anse Noire' },      
     ],
     niveauEffort: 2,
     dureeMoyenne: '3h',
     costEstimate: 'Gratuit',
-    image: '/assets/anse noire tortue paysage.jpg',
+    image: { url: '/assets/anse noire tortue paysage.jpg', alt: 'Tortue marine nageant dans les eaux claires de l Anse Dufour en Martinique' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -95,14 +100,14 @@ export const PLACES: Place[] = [
     description: "Plage sauvage de sable noir au pied de falaises volcaniques. Accès par sentier à travers la forêt tropicale. Vagues puissantes, ambiance préservée et authentique.",
     descriptionLongue: "Anse Couleuvre est l'une des plages les plus sauvages et préservées de Martinique. Située au nord de la côte Caraïbe, elle se distingue par son sable noir volcanique et ses falaises basaltiques couvertes de végétation tropicale. L'accès se fait par un sentier de 15 minutes à travers la forêt tropicale humide, ce qui filtre les visiteurs et préserve l'aspect authentique du site. Les vagues y sont puissantes et la baignade est déconseillée, mais le paysage est saisissant de beauté. La plage est bordée de cocotiers sauvages et de raisiniers de bord de mer. Au lever du jour, la lumière dorée sur le sable noir offre des opportunités photographiques exceptionnelles. Le Prêcheur, commune voisine, propose des sentiers de marche le long de la côte volcanique.",
     galerie: [
-      '/assets/anse couleuvre aerial.jpg',
-      '/assets/anse couleuvre coucher de soleil.jpg',
-      '/assets/anse couleuvre drone.jpg',
+      { url: '/assets/anse couleuvre aerial.jpg', alt: 'Vue aérienne de la plage sauvage d Anse Couleuvre au Prêcheur' },
+      { url: '/assets/anse couleuvre coucher de soleil.jpg', alt: 'Coucher de soleil spectaculaire sur le sable noir d Anse Couleuvre' },
+      { url: '/assets/anse couleuvre drone.jpg', alt: 'Falaises verdoyantes et forêt tropicale à Anse Couleuvre en Martinique' },
     ],
     niveauEffort: 3,
     dureeMoyenne: '2h30',
     costEstimate: 'Gratuit',
-    image: '/assets/anse couleuvre nuageux.jpg',
+    image: { url: '/assets/anse couleuvre nuageux.jpg', alt: 'Ambiance sauvage et mystique sur la plage de sable noir d Anse Couleuvre' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -113,16 +118,16 @@ export const PLACES: Place[] = [
     description: "Plage tranquille au sud du Marin, protégée par une pointe rocheuse. Eaux calmes parfaites pour le farniente et la baignade en famille, avec restaurants de plage à proximité.",
     descriptionLongue: "La Pointe du Marin est une plage tranquille située au sud du Marin, idéalement protégée par une pointe rocheuse naturelle qui bloque les vagues et les courants. Les eaux y sont d'une clarté remarquable et d'une température agréable toute l'année. Cette plage est particulièrement adaptée aux familles avec enfants grâce à sa faible profondeur et à l'absence de vagues. Plusieurs restaurants de plage et snacks bordent le site, proposant une cuisine locale de qualité à des prix raisonnables. La plage offre une vue magnifique sur le Rocher du Diamant au loin. Le coucher de soleil depuis la pointe rocheuse est un moment à ne pas manquer. C'est un lieu de détente par excellence, parfait pour une après-midi de farniente après des activités plus sportives le matin.",
     galerie: [
-      '/assets/pointe marin aerial.jpg',
-      '/assets/pointe marin bateau.jpg',
+      { url: '/assets/pointe marin aerial.jpg', alt: 'Vue aérienne de la baie et de la plage de la Pointe du Marin' },
+      { url: '/assets/pointe marin bateau.jpg', alt: 'Voiliers et bateaux au mouillage à la Pointe du Marin en Martinique' },
      ],
     niveauEffort: 1,
     dureeMoyenne: '2h',
     costEstimate: 'Gratuit',
-    image: '/assets/pointe marin eau.jpg',
+    image: { url: '/assets/pointe marin eau.jpg', alt: 'Eaux turquoises et peu profondes de la Pointe du Marin en Martinique' },
     bestTimeOfDay: 'any',
   },
-{
+  {
     id: 'le-diamant',
     nom: 'Plage du Diamant',
     categorie: 'Plages',
@@ -130,18 +135,18 @@ export const PLACES: Place[] = [
     description: "Une immense plage de sable blond bordée de sous-bois et faisant face au majestueux Rocher du Diamant. Réputée pour ses vagues, ses promenades et ses couchers de soleil spectaculaires.",
     descriptionLongue: "La plage du Diamant, aussi appelée Grande Anse du Diamant, s'étire sur plus de 3 kilomètres face au célèbre Rocher du Diamant. Offrant un panorama carte postale impressionnant, elle est bordée d'une végétation sous-bois idéale pour s'abriter à l'ombre. Les vagues y sont souvent vigoureuses, ce qui en fait un spot très apprécié pour les promenades au bord de l'eau, le bodyboard et les sorties running. Le site abrite également le mémorial Cap 110 à proximité. C'est l'un des plus beaux spots de l'île pour admirer le coucher de soleil, lorsque la lumière teinte la mer et le rocher de nuances dorées.",
     galerie: [
-      '/assets/le diamant cadre vegetal paysage.jpg',
-      '/assets/le diamant coucher de soleil teal et orange.jpg',
-      '/assets/le diamant mangrose paysage.jpg',
-      '/assets/le diamant coucher de soleil la cherry.jpg',
+      { url: '/assets/le diamant cadre vegetal paysage.jpg', alt: 'Cadre végétal et vue sur la mer à la plage du Diamant' },
+      { url: '/assets/le diamant coucher de soleil teal et orange.jpg', alt: 'Coucher de soleil flamboyant face au Rocher du Diamant' },
+      { url: '/assets/le diamant mangrose paysage.jpg', alt: 'Paysage côtier et végétation du Diamant' },
+      { url: '/assets/le diamant coucher de soleil la cherry.jpg', alt: 'Coucher de soleil magique sur la plage du Diamant en Martinique' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h',
     costEstimate: 'Gratuit',
-    image: '/assets/le diamant famille.jpg',
+    image: { url: '/assets/le diamant famille.jpg', alt: 'Famille profitant de la grande plage du Diamant face au Rocher' },
     bestTimeOfDay: 'apresMidi',
   },
-{
+  {
     id: 'anses-d-arlet-bourg',
     nom: "Les Anses d'Arlet (Bourg)",
     categorie: 'Plages',
@@ -149,41 +154,37 @@ export const PLACES: Place[] = [
     description: "Le village de carte postale par excellence avec son ponton aligné face à l'église. Eaux calmes et transparentes, idéales pour le snorkeling et l'observation des tortues.",
     descriptionLongue: "Le Bourg des Anses d'Arlet est l'un des lieux les plus pittoresques de Martinique. Célèbre pour son église Saint-Henri alignée dans l'axe exact du ponton en bois, la plage offre une eau cristalline bordée de maisons créoles colorées. C'est un spot exceptionnel pour la baignade et le snorkeling : il suffit de s'immerger près des rochers ou sous le ponton pour observer une multitude de poissons tropicaux et fréquemment des tortues marines. Plusieurs petits restaurants et terrasses au bord de l'eau permettent de déjeuner les pieds dans le sable dans une ambiance paisible et authentique.",
     galerie: [
-      '/assets/anses d arlet aerial.jpg',
-      '/assets/anses d arlet coucher de soleil.jpg',
-      '/assets/anses d arlet tortue.jpg',
+      { url: '/assets/anses d arlet aerial.jpg', alt: 'Vue aérienne du village et du ponton des Anses d Arlet' },
+      { url: '/assets/anses d arlet coucher de soleil.jpg', alt: 'Coucher de soleil sur le bourg des Anses d Arlet' },
+      { url: '/assets/anses d arlet tortue.jpg', alt: 'Tortue marine près du rivage aux Anses d Arlet' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '3h',
     costEstimate: 'Gratuit',
-    image: '/assets/anses d arlet ponton.jpg',
+    image: { url: '/assets/anses d arlet ponton.jpg', alt: 'Le célèbre ponton et l église du bourg des Anses d Arlet en Martinique' },
     bestTimeOfDay: 'any',
   },
-{
+  {
     id: 'anse-michel',
     nom: 'Anse Michel',
     categorie: 'Plages',
     zone: 'Sud Atlantique',
     description: "Une magnifique plage bordée de cocotiers et protégée par une barrière de corail. Lagon turquoise idéal pour le kitesurf, le windsurf et le farniente à l'ombre.",
-    descriptionLongue: "Située à Sainte-Anne du côté atlantique, l'Anse Michel (Cap Chevalier) offre un panorama tropical idyllique avec son sable fin et ses nombreux cocotiers inclinés vers le lagon. Protégée par un récif corallien qui retient la houle, elle forme un immense plan d'eau turquoise et calme, parfait pour la baignade en toute sécurité. C'est également l'un des spots de glisse les plus prisés de l'île pour la planche à voile et le kitesurf grâce à ses alizés réguliers. Quelques carbets et restaurants de plage locaux permettent d'y déguster des spécalités créoles sous les cocotiers.",
+    descriptionLongue: "Située à Sainte-Anne du côté atlantique, l'Anse Michel (Cap Chevalier) offre un panorama tropical idyllique avec son sable fin et ses nombreux cocotiers inclinés vers le lagon. Protégée par un récif corallien qui retient la houle, elle forme un immense plan d'eau turquoise et calme, parfait pour la baignade en toute sécurité. C'est également l'un des spots de glisse les plus prisés de l'île pour la planche à voile et le kitesurf grâce à ses alizés réguliers. Quelques carbets et restaurants de plage locaux permettent d'y déguster des spécialités créoles sous les cocotiers.",
     galerie: [
-      '/assets/anse michel eau.jpg',
-      '/assets/anse michel femme.jpg',
-      '/assets/anse michel rochers.jpg',
+      { url: '/assets/anse michel eau.jpg', alt: 'Eaux cristallines du lagon de l Anse Michel à Sainte-Anne' },
+      { url: '/assets/anse michel femme.jpg', alt: 'Détente sous les cocotiers à l Anse Michel' },
+      { url: '/assets/anse michel rochers.jpg', alt: 'Rochers et littoral sauvage de l Anse Michel' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '3h',
     costEstimate: 'Gratuit',
-    image: '/assets/anse michel plage.jpg',
+    image: { url: '/assets/anse michel plage.jpg', alt: 'Plage paradisiaque de l Anse Michel bordée de cocotiers en Martinique' },
     bestTimeOfDay: 'matin',
   },
 
-
-
-
   // === RANDONNÉES ===
-
-{
+  {
     id: 'montagne-pelee',
     nom: 'Montagne Pelée',
     categorie: 'Randonnées',
@@ -191,35 +192,33 @@ export const PLACES: Place[] = [
     description: "L'ascension du célèbre volcan actif de la Martinique. Une randonnée exigeante offrant des panoramas spectaculaires sur toute l'île lorsque le sommet se découvre.",
     descriptionLongue: "Point culminant de la Martinique à 1 397 mètres d'altitude, la Montagne Pelée est un volcan mythique classé au patrimoine mondial de l'UNESCO. L'itinéraire classique par le Refuge de l'Aileron vous fait gravir les crêtes jusqu'au plateau du Chinois ou au dôme du Chinois. Le parcours est physique avec un dénivelé important et des passages rocheux, mais offre des vues imprenables sur la baie de Saint-Pierre, l'Atlantique et la mer des Caraïbes. Il est vivement conseillé de partir très tôt le matin pour maximiser les chances d'atteindre le sommet avant que la brume ne se lève, et de prévoir des vêtements chauds et imperméables.",
     galerie: [
-     '/assets/montagne pelee 3.jpg',
-      '/assets/montagne pelee 4.jpg',
+      { url: '/assets/montagne pelee 3.jpg', alt: 'Sentier de randonnée sur les crêtes de la Montagne Pelée' },
+      { url: '/assets/montagne pelee 4.jpg', alt: 'Panoramique depuis les hauteurs du volcan en Martinique' },
     ],
     niveauEffort: 4,
     dureeMoyenne: '5h',
     costEstimate: 'Gratuit',
-    image: '/assets/montagne pelee 1.jpg',
+    image: { url: '/assets/montagne pelee 1.jpg', alt: 'Vue majestueuse sur la Montagne Pelée et ses paysages volcaniques' },
     bestTimeOfDay: 'matin',
   },
-
-
- {
+  {
     id: 'caravelle',
     nom: "Presqu'île de la Caravelle",
     categorie: 'Randonnées',
     zone: 'Nord Atlantique',
     description: "Réserve naturelle offrant des sentiers entre mangrove, forêt sèche et falaises basaltiques. Panoramas à 360° sur l'Atlantique et ruines du château Dubuc.",
-    descriptionLongue: "La réserve naturelle de la presqu'île de la Caravelle propose l'une des randonnées les plus spectaculaires de Martinique. Le grand sentier (boucle d'environ 8 km, ~3h30) et le petit sentier (boucle de 1h30) permettent d'explorer une incroyable variété de paysages : mangrove sauvage, savane, forêt sèche et falaises volcaniques battues par les vagues de l'Atlantique. Le parcours passe par le célèbre Phare de la Caravelle offre un point de vue imprenable à 360° sur toute l'île. Vous pourrez également visiter les ruines historiques du Château Dubuc, une ancienne habitation sucrière du XVIIIe siècle. Pensez à prévoir une bonne réserve d'eau, un chapeau et de la crème solaire, car de nombreuses portions sont très exposées au soleil.",
+    descriptionLongue: "La réserve naturelle de la presqu'île de la Caravelle propose l'une des randonnées les plus spectaculaires de Martinique. Le grand sentier (boucle d'environ 8 km, ~3h30) et le petit sentier (boucle de 1h30) permettent d'explorer une incroyable variété de paysages : mangrove sauvage, savane, forêt sèche et falaises volcaniques battues par les vagues de l'Atlantique. Le parcours passe par le célèbre Phare de la Caravelle offre un point de vue imprenable à 360° sur toute l'île. Vous pourrez également visiter les ruines historiques du Château Dubuc, une habitation sucrière du XVIIIe siècle. Pensez à prévoir une bonne réserve d'eau, un chapeau et de la crème solaire, car de nombreuses portions sont très exposées au soleil.",
     galerie: [
-      '/assets/caravelle martinique.jpg',
-      '/assets/caravelle sunset.jpg',
+      { url: '/assets/caravelle martinique.jpg', alt: 'Paysage côtier de la réserve naturelle de la Caravelle' },
+      { url: '/assets/caravelle sunset.jpg', alt: 'Coucher de soleil sur la presqu île de la Caravelle' },
     ],
     niveauEffort: 2,
     dureeMoyenne: '3h30',
     costEstimate: 'Gratuit',
-    image: '/assets/caravelle.jpg',
+    image: { url: '/assets/caravelle.jpg', alt: 'Randonnée sur la presqu île de la Caravelle en Martinique' },
     bestTimeOfDay: 'matin',
   },
-{
+  {
     id: 'trace-jesuites',
     nom: 'Trace des Jésuites',
     categorie: 'Randonnées',
@@ -227,17 +226,17 @@ export const PLACES: Place[] = [
     description: "Une immersion spectaculaire dans la forêt tropicale humide du Nord. Sentier historique franchissant la rivière du Lorrain au milieu de fougères arborescentes géantes.",
     descriptionLongue: "Tracée par les religieux au XVIIe siècle pour relier les côtes sous le vent et au vent, la Trace des Jésuites est l'une des randonnées en forêt tropicale les plus emblématiques de la Martinique. Le parcours descend au cœur d'une végétation luxuriante composée de fougères arborescentes, de gommiers et de racines impressionnantes, jusqu'à la rivière du Lorrain traversée par un pont suspendu. En chemin, les passionnés de nature pourront observer la matoutou falaise (mygale endémique). Le sentier reliant la Route de la Trace (D41) à Fond Saint-Denis présente un dénivelé notable avec des passages souvent boueux et glissants. Prévoyez de bonnes chaussures de randonnée et un système de navette ou un aller-retour.",
     galerie: [
-      '/assets/trace des jesuites matoutou.jpg',
-      '/assets/trace des jesuites pont.jpg',
-      '/assets/trace des jesuites vue.jpg',
+      { url: '/assets/trace des jesuites matoutou.jpg', alt: 'Immersion dans la jungle de la Trace des Jésuites' },
+      { url: '/assets/trace des jesuites pont.jpg', alt: 'Pont suspendu au-dessus de la rivière sur la Trace des Jésuites' },
+      { url: '/assets/trace des jesuites vue.jpg', alt: 'Végétation tropicale luxuriante de la forêt martiniquaise' },
     ],
     niveauEffort: 3,
     dureeMoyenne: '3h00',
     costEstimate: 'Gratuit',
-    image: '/assets/trace des jesuites.jpg',
+    image: { url: '/assets/trace des jesuites.jpg', alt: 'Sentier de randonnée de la Trace des Jésuites en forêt tropicale' },
     bestTimeOfDay: 'matin',
   },
-{
+  {
     id: 'savane-des-petrifications',
     nom: 'Savane des Pétrifications',
     categorie: 'Randonnées',
@@ -245,20 +244,19 @@ export const PLACES: Place[] = [
     description: "Une randonnée dépaysante à travers un paysage quasi lunaire et désertique en bord de mer. Tronçon emblématique de la Trace des Caps au départ de l'Anse Trabaud.",
     descriptionLongue: "Située à l'extrémité sud de la presqu'île de Sainte-Anne, la Savane des Pétrifications offre un décor unique et surprenant en Martinique, rappelant des paysages désertiques ou lunaires. Ce tronçon du célèbre sentier de la Trace des Caps traverse une vaste plaine aride aux nuances de terre rouge et ocre, bordée par les vagues déchaînées de l'océan Atlantique et des falaises sculptées. Le sentier permet d'admirer des formations géologiques singulières et des cactus cierge. Le parcours est quasi plat mais totalement exposé au soleil et au vent : il est indispensable de prévoir une grande quantité d'eau, de la crème solaire et un chapeau, de préférence tôt le matin.",
     galerie: [
-      '/assets/la savane des petrifications modele femme bis.jpg',
-      '/assets/la savane des petrifications modele femme.jpg',
-      '/assets/la savane des petrifications paysage.jpg',
+      { url: '/assets/la savane des petrifications modele femme bis.jpg', alt: 'Randonneuse dans le décor lunaire de la Savane des Pétrifications' },
+      { url: '/assets/la savane des petrifications modele femme.jpg', alt: 'Paysage aride et minéral de la Savane des Pétrifications à Sainte-Anne' },
+      { url: '/assets/la savane des petrifications paysage.jpg', alt: 'Vastes étendues ocres de la Savane des Pétrifications' },
     ],
     niveauEffort: 2,
     dureeMoyenne: '2h00',
     costEstimate: 'Gratuit',
-    image: '/assets/la savane des petrifications.jpg',
+    image: { url: '/assets/la savane des petrifications.jpg', alt: 'Paysage désertique et spectaculaire de la Savane des Pétrifications' },
     bestTimeOfDay: 'matin',
   },
 
-
   // === RIVIÈRES & CASCADES ===
-{
+  {
     id: 'cascade-couleuvre',
     nom: 'Cascade Couleuvre',
     categorie: 'Rivières & Cascades',
@@ -266,15 +264,15 @@ export const PLACES: Place[] = [
     description: "Randonnée immersive au cœur de la forêt tropicale humide du Grand Nord, menant à l'une des plus hautes chutes d'eau de Martinique (120 m).",
     descriptionLongue: "Située à l'extrême nord de l'île sur la commune du Prêcheur, la randonnée de la Cascade Couleuvre suit le lit de la rivière à travers une végétation tropicale luxuriante et préservée. Le sentier remonte au milieu des zamana géants, des kakis sauvages et des fougères arborescentes. Avec un peu d'attention, vous pourrez y apercevoir le matoutou falaise (la mygale endémique). Le parcours se termine au pied d'une impressionnante chute d'eau de plus de 120 mètres de haut tombant le long d'une falaise volcanique noire. C'est une balade très ombragée, rafraîchissante et accessible, idéale après la plage de sable noir de l'Anse Couleuvre toute proche.",
     galerie: [
-      '/assets/cascade couleuvre cadre.jpg',
+      { url: '/assets/cascade couleuvre cadre.jpg', alt: 'Cascade Couleuvre et sa chute d eau au cœur de la jungle' },
     ],
     niveauEffort: 2,
     dureeMoyenne: '2h00',
     costEstimate: 'Gratuit',
-    image: '/assets/cascade couleuvre.jpg',
+    image: { url: '/assets/cascade couleuvre.jpg', alt: 'La grande cascade Couleuvre et son bassin au Prêcheur en Martinique' },
     bestTimeOfDay: 'matin',
   },
-{
+  {
     id: 'cascade-didier',
     nom: 'Cascade de Didier',
     categorie: 'Rivières & Cascades',
@@ -282,12 +280,12 @@ export const PLACES: Place[] = [
     description: "Randonnée aventureuse au départ de la route de Didier, traversant un tunnel obscur et longeant la rivière jusqu'à une magnifique cascade et son bassin d'eau fraîche.",
     descriptionLongue: "Située sur les hauteurs de Fort-de-France, la randonnée des cascades de Didier offre un parcours original et rafraîchissant. L'itinéraire commence par la traversée d'un ancien tunnel d'aqueduc obscur d'environ 200 mètres (lampe torche ou téléphone indispensable), avant de remonter le lit de la rivière au cœur d'une végétation tropicale dense. Le sentier mène d'abord à la première cascade et son grand bassin propice à la baignade. Les plus aventureux peuvent poursuivre vers la seconde cascade, plus haute et plus sauvage. Le parcours nécessite d'avoir le pied sûr car les rochers sont souvent glissants et le franchissement de la rivière se fait parfois les pieds dans l'eau.",
     galerie: [
-      '/assets/cascades didier.jpg',
+      { url: '/assets/cascades didier.jpg', alt: 'Bassin et cascade de Didier à Fort-de-France' },
     ],
     niveauEffort: 3,
     dureeMoyenne: '2h30',
     costEstimate: 'Gratuit',
-    image: '/assets/cascades didier 2.jpg',
+    image: { url: '/assets/cascades didier 2.jpg', alt: 'Randonnée aquatique aux cascades de Didier en Martinique' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -298,12 +296,12 @@ export const PLACES: Place[] = [
     description: "Une remontée aquatique spectaculaire entre deux parois rocheuses impressionnantes, menant à une cascade nichée au cœur de la forêt tropicale.",
     descriptionLongue: "Situées à L'Ajoupa-Bouillon au pied de la Montagne Pelée, les Gorges de la Falaise offrent une randonnée aquatique unique et rafraîchissante. Le parcours consiste à remonter le lit de la rivière Falaise en marchant et nageant au milieu d'un canyon encaissé aux parois vertigineuses recouvertes de mousse et de végétation luxuriante. La traversée se fait obligatoirement sous la conduite d'un guide local pour des raisons de sécurité, jusqu'à atteindre une superbe cascade et son bassin où la baignade est un pur moment de bonheur. Prévoyez un maillot de bain, des chaussures fermées allant dans l'eau et idéalement un sac étanche.",
     galerie: [
-      '/assets/gorges de la falaise pose longue.jpg',
+      { url: '/assets/gorges de la falaise pose longue.jpg', alt: 'Les gorges encaissées de la rivière Falaise en Martinique' },
     ],
     niveauEffort: 2,
     dureeMoyenne: '1h30',
     costEstimate: 'Payant (Guide obligatoire)',
-    image: '/assets/les gorges de la falaise.jpg',
+    image: { url: '/assets/les gorges de la falaise.jpg', alt: 'Aventure aquatique dans les Gorges de la Falaise à L Ajoupa-Bouillon' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -314,13 +312,13 @@ export const PLACES: Place[] = [
     description: "Randonnée aquatique sportive et sauvage le long de la rivière Alma, au cœur d'une forêt hygrophile luxuriante. Réservée aux marcheurs expérimentés.",
     descriptionLongue: "Située le long de la Route de la Trace au pied des Pitons du Carbet, la randonnée de la rivière Alma propose une immersion totale dans la forêt tropicale la plus sauvage de l'île. Le parcours consiste à remonter le cours d'eau au milieu de blocs rocheux immenses, de fougères géantes et de gorges encaissées. Très technique et glissante, cette randonnée nécessite de marcher et nager dans l'eau fraîche de la rivière. Il est impératif de surveiller attentivement la météo avant de s'y engager, la rivière pouvant monter très rapidement en cas de pluie sur les pitons.",
     galerie: [
-      '/assets/riviere alma.jpg',
-      '/assets/riviere alma eau.jpg',
+      { url: '/assets/riviere alma.jpg', alt: 'Randonnée sportive dans le lit de la rivière Alma' },
+      { url: '/assets/riviere alma eau.jpg', alt: 'Eaux fraîches et rochers de la rivière Alma en Martinique' },
     ],
     niveauEffort: 4,
     dureeMoyenne: '3h30',
     costEstimate: 'Gratuit',
-    image: '/assets/riviere alma eau bis.jpg',
+    image: { url: '/assets/riviere alma eau bis.jpg', alt: 'Bassin naturel et forêt tropicale le long de la rivière Alma' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -331,13 +329,13 @@ export const PLACES: Place[] = [
     description: "Jolie cascade facile d'accès nichée dans la jungle près de Fonds-Saint-Denis, idéale pour une halte fraîcheur et une baignade en famille.",
     descriptionLongue: "Facilement accessible depuis la route menant à Fonds-Saint-Denis, la cascade du Saut Gendarme se situe dans un écrin de verdure tropicale paisible. Après une très courte descente aménagée de quelques minutes via des escaliers en bois, vous découvrirez une chute d'eau d'environ 10 mètres se déversant dans un bassin ombragé idéal pour se rafraîchir. C'est l'étape parfaite pour une pause détente sans effort physique intense lors d'une journée d'exploration du Nord ou sur la Route de la Trace.",
     galerie: [
-      '/assets/saut gendarme 2.jpg',
-      '/assets/saut gendarme 3.jpg',
+      { url: '/assets/saut gendarme 2.jpg', alt: 'Chute d eau et verdure luxuriante au Saut Gendarme' },
+      { url: '/assets/saut gendarme 3.jpg', alt: 'Bassin ombragé du Saut Gendarme en Martinique' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '0h45',
     costEstimate: 'Gratuit',
-    image: '/assets/saut gendarme 1.jpg',
+    image: { url: '/assets/saut gendarme 1.jpg', alt: 'La cascade facile d accès du Saut Gendarme sur la Route de la Trace' },
     bestTimeOfDay: 'any',
   },
   {
@@ -348,13 +346,13 @@ export const PLACES: Place[] = [
     description: "Une randonnée aquatique ludique au cœur de la forêt tropicale, célèbre pour ses glissades naturelles sculptées par la rivière dans la roche lisse.",
     descriptionLongue: "Nichés sur les hauts de Saint-Pierre et du Carbet, les toboggans naturels de la rivière du Carbet proposent une aventure aquatique très appréciée. Le sentier remonte au milieu d'une végétation verdoyante et humide avant de rejoindre le lit de la rivière. Là, l'eau claire a poli la roche volcanique au fil des siècles, créant de véritables toboggans naturels et de petits bassins rafraîchissants parfaits pour se baigner. C'est un itinéraire idéal pour se détendre et s'amuser en pleine nature, tout en gardant une attention particulière à la météo avant de partir pour éviter les montées d'eau subites.",
     galerie: [
-      '/assets/toboggans du carbet.jpg',
-      '/assets/toboggans du carbet vue.jpg',
+      { url: '/assets/toboggans du carbet.jpg', alt: 'Toboggans naturels sculptés dans la roche au Carbet' },
+      { url: '/assets/toboggans du carbet vue.jpg', alt: 'Vue sur la rivière et la forêt tropicale du Carbet' },
     ],
     niveauEffort: 2,
     dureeMoyenne: '2h00',
     costEstimate: 'Gratuit',
-    image: '/assets/toboggans du carbet chutes.jpg',
+    image: { url: '/assets/toboggans du carbet chutes.jpg', alt: 'Les toboggans naturels de la rivière du Carbet en Martinique' },
     bestTimeOfDay: 'matin',
   },
 
@@ -367,15 +365,15 @@ export const PLACES: Place[] = [
     description: "Domaine historique d'exception mêlant architecture créole, parc botanique majestueux, anciennes installations rhumères et fondation d'art contemporain.",
     descriptionLongue: "L'Habitation Clément au François est un haut lieu du patrimoine martiniquais. Ce domaine de près de 16 hectares abrite une maison de maître du XVIIIe siècle parfaitement conservée, d'anciennes installations industrielles inscrites aux Monuments Historiques et de chais où vieillit le rhum très vieux Clément. Le site est magnifiquement mis en valeur par un immense parc botanique labellisé 'Jardin Remarquable' et par la Fondation Clément qui accueille des expositions d'art contemporain caribéen. C'est une visite incontournable pour conjuguer histoire, art et dégustation.",
     galerie: [
-      '/assets/habitation clement 2.jpg',
-      '/assets/habitation clement 3.jpg',
-      '/assets/habitation clement 4.jpg',
-      '/assets/habitation clement 5.jpg',
+      { url: '/assets/habitation clement 2.jpg', alt: 'Parc botanique et sculptures à l Habitation Clément' },
+      { url: '/assets/habitation clement 3.jpg', alt: 'Chais de vieillissement de rhum à l Habitation Clément' },
+      { url: '/assets/habitation clement 4.jpg', alt: 'Architecture créole et domaine historique au François' },
+      { url: '/assets/habitation clement 5.jpg', alt: 'Exposition d art à la Fondation Clément' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h30',
     costEstimate: 'Payant (env. 13€)',
-    image: '/assets/habitation clement 1.jpg',
+    image: { url: '/assets/habitation clement 1.jpg', alt: 'La grande maison de maître de l Habitation Clément en Martinique' },
     bestTimeOfDay: 'any',
   },
   {
@@ -386,14 +384,14 @@ export const PLACES: Place[] = [
     description: "Somptueux jardin botanique réunissant plus de 3 000 espèces de plantes tropicales et colibris, complété par un parcours suspendu dans la canopée.",
     descriptionLongue: "Niché sur les hauteurs de Fort-de-France le long de la Route de la Trace, le Jardin de Balata est l'œuvre du paysagiste Jean-Philippe Thoze. Ce paradis végétal offre une immersion magique parmi les hibiscus, alpinias, balisiers, palmiers et bégonias géants. Les mangeoires disposées près de la maison créole traditionnelle attirent des dizaines de colibris virevoltants. Un parcours sécurisé de ponts suspendus à plus de 15 mètres de hauteur permet d'observer la forêt tropicale et la baie de Fort-de-France depuis la canopée.",
     galerie: [
-      '/assets/balata 2.jpg',
-      '/assets/balata 3.jpg',
-      '/assets/balata 4.jpg',
+      { url: '/assets/balata 2.jpg', alt: 'Fleurs tropicales et sentiers du Jardin de Balata' },
+      { url: '/assets/balata 3.jpg', alt: 'Ponts suspendus dans la canopée au Jardin de Balata' },
+      { url: '/assets/balata 4.jpg', alt: 'Vue panoramique depuis le Jardin de Balata à Fort-de-France' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h00',
     costEstimate: 'Payant (env. 16€)',
-    image: '/assets/balata 1.jpg',
+    image: { url: '/assets/balata 1.jpg', alt: 'Vue générale et maison créole du somptueux Jardin de Balata en Martinique' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -404,13 +402,13 @@ export const PLACES: Place[] = [
     description: "Ensemble sculptural poignant érigé à l'Anse Caffard face au Rocher du Diamant, rendant hommage aux victimes de l'esclavage.",
     descriptionLongue: "Imaginé par l'artiste martiniquais Laurent Valère pour le 150e anniversaire de l'abolition de l'esclavage, le Mémorial Cap 110 se dresse sur la falaise de l'Anse Caffard. Il se compose de 15 bustes imposants en béton armé blanc de 2,50 mètres de haut, disposés en triangle vers le cap 110° (la direction du golfe de Guinée). Le site commémore le naufrage tragique d'un navire négrier clandestin survenu en 1830. Face à l'immensité de l'océan Atlantique et au Rocher du Diamant, c'est un lieu d'histoire et de mémoire profondément émouvant.",
     galerie: [
-      '/assets/memorial cap 110 2.jpg',
-      '/assets/memorial cap 110 3.jpg',
+      { url: '/assets/memorial cap 110 2.jpg', alt: 'Statues blanches du Mémorial Cap 110 tournées vers l océan' },
+      { url: '/assets/memorial cap 110 3.jpg', alt: 'Vue sur les monuments historiques et le Rocher du Diamant' },
    ],
     niveauEffort: 1,
     dureeMoyenne: '0h45',
     costEstimate: 'Gratuit',
-    image: '/assets/memorial cap 110 1.jpg',
+    image: { url: '/assets/memorial cap 110 1.jpg', alt: 'Les sculptures imposantes du Mémorial Cap 110 à l Anse Caffard' },
     bestTimeOfDay: 'any',
   },
   {
@@ -421,14 +419,14 @@ export const PLACES: Place[] = [
     description: "Visite historique de l'ancienne 'Petit Paris des Antilles', détruite en 1902 par l'éruption de la Montagne Pelée. Théâtre, cachot de Cyparis et musée.",
     descriptionLongue: "Saint-Pierre, classée Ville d'Art et d'Histoire, conserve les vestiges fascinants de la capitale culturelle et économique qu'elle fut jusqu'au 8 mai 1902. En quelques secondes, l'éruption de la Montagne Pelée rasa la ville. La visite permet de découvrir les ruines spectaculaires du Grand Théâtre, l'ancienne église du Fort, ou encore le fameux cachot de Cyparis, l'un des rares survivants. Le Mémorial de la Catastrophe de 1902 (Musée Frank A. Perret) complète le parcours avec des objets de la vie quotidienne déformés par la chaleur de la nuée ardente.",
     galerie: [
-      '/assets/saint pierre ruines 2.jpg',
-      '/assets/saint pierre ruines 3.jpg',
-      '/assets/saint pierre ruines 4.jpg',
+      { url: '/assets/saint pierre ruines 2.jpg', alt: 'Vestiges du Grand Théâtre de Saint-Pierre' },
+      { url: '/assets/saint pierre ruines 3.jpg', alt: 'Ruines volcaniques et murs de pierre à Saint-Pierre' },
+      { url: '/assets/saint pierre ruines 4.jpg', alt: 'Histoire et patrimoine de la ville de Saint-Pierre en Martinique' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h00',
     costEstimate: 'Gratuit (Musée payant env. 5€)',
-    image: '/assets/saint pierre ruines 1.jpg',
+    image: { url: '/assets/saint pierre ruines 1.jpg', alt: 'Les ruines historiques de Saint-Pierre au pied de la Montagne Pelée' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -439,14 +437,14 @@ export const PLACES: Place[] = [
     description: "Cœur vivant de la capitale sous une immense halle métallique. Épices, fruits tropicaux, liqueurs, artisanat et plats traditionnels.",
     descriptionLongue: "Construit à la fin du XIXe siècle et restauré depuis, le Grand Marché Couvert (ou Marché aux Épices) de Fort-de-France est une explosion de couleurs et de senteurs. Sous sa grande structure métallique imaginée par l'architecte Henri Picq, les étals regorgent de bâtons de cannelle, gousses de vanille, piments pays, liqueurs artisanales, rhums arrangés et vannerie créole. C'est également l'endroit idéal pour déjeuner sur le pouce des boudins créoles, accras de morue ou colombo de poulet préparés par les doudous dans une ambiance chaleureuse.",
     galerie: [
-      '/assets/grand marche 2.jpg',
-      '/assets/grand marche 3.jpg',
-      '/assets/grand marche 4.jpg',
+      { url: '/assets/grand marche 2.jpg', alt: 'Épices colorées et étals du marché de Fort-de-France' },
+      { url: '/assets/grand marche 3.jpg', alt: 'Fruits tropicaux et artisanat au Grand Marché Couvert' },
+      { url: '/assets/grand marche 4.jpg', alt: 'Ambiance vivante du marché couvert de la capitale' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '1h30',
     costEstimate: 'Gratuit',
-    image: '/assets/grand marche 1.jpg',
+    image: { url: '/assets/grand marche 1.jpg', alt: 'La façade et l architecture métallique du Grand Marché de Fort-de-France' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -457,36 +455,35 @@ export const PLACES: Place[] = [
     description: "Village traditionnel reconstitué aux Trois-Îlets retraçant 400 ans d'histoire de la Martinique, de l'habitat amerindien aux cases en gaulette.",
     descriptionLongue: "Imaginé et façonné par Gilbert Larose dans la campagne des Trois-Îlets, ce parc de 3 hectares offre un voyage pédagogique et immersif dans le temps. Le parcours fait découvrir des cases en gaulette au sol en terre battue, un village Amérindien, un jardin créole traditionnel avec ses plantes médicinales d'antan, ainsi qu'un espace consacré au mode de vie des campagnes après l'abolition de l'esclavage. Des panneaux illustrés et des ateliers explicatifs permettent de comprendre le patrimoine rural et les traditions martiniquaises.",
     galerie: [
-      '/assets/savane des esclaves 2.jpg',
-      '/assets/savane des esclaves 3.jpg',
-      '/assets/savane des esclaves 1.jpg',
+      { url: '/assets/savane des esclaves 2.jpg', alt: 'Cases traditionnelles en gaulette à la Savane des Esclaves' },
+      { url: '/assets/savane des esclaves 3.jpg', alt: 'Jardin médicinal et créole aux Trois-Îlets' },
+      { url: '/assets/savane des esclaves 1.jpg', alt: 'Village amérindien reconstitué en Martinique' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h00',
     costEstimate: 'Payant (env. 12€)',
-    image: '/assets/savane des esclaves 4.jpg',
+    image: { url: '/assets/savane des esclaves 4.jpg', alt: 'Entrée et cases historiques de La Savane des Esclaves aux Trois-Îlets' },
     bestTimeOfDay: 'any',
   },
 
   // === SPORT & AVENTURE ===
-{
+  {
     id: 'plongee-saint-pierre',
     nom: 'Plongée sous-marine à Saint-Pierre',
     categorie: 'Sport & Aventure',
     zone: 'Nord Caraïbe',
     description: "Spot d'exception mondialement connu pour ses épaves historiques de 1902 et ses tombants volcaniques riches en faune sous-marine.",
-    descriptionLongue: "La baie de Saint-Pierre offre l'une des expériences de plongée les plus uniques des Caraïbes. Suite à l'éruption de la Montagne Pelée en 1902, plus de dix navires ont coulé dans la baie (dont le célèbre Roraima), formant aujourd'hui de véritables récifs artificiels chargés d'histoire. Accessible en baptême pour les débutants sur les jardins de corail peu profonds ou en plongée d me exploration pour les niveaux confirmés sur les épaves, le site regorge de biodiversité : tortues de mer, raies, barracudas, moustelles et coraux profus sur fond de sable noir. De nombreux clubs locaux proposent des sorties encadrées en toute sécurité.",
+    descriptionLongue: "La baie de Saint-Pierre offre l'une des expériences de plongée les plus uniques des Caraïbes. Suite à l'éruption de la Montagne Pelée en 1902, plus de dix navires ont coulé dans la baie (dont le célèbre Roraima), formant aujourd'hui de véritables récifs artificiels chargés d'histoire. Accessible en baptême pour les débutants sur les jardins de corail peu profonds ou en plongée d'exploration pour les niveaux confirmés sur les épaves, le site regorge de biodiversité : tortues de mer, raies, barracudas, moustelles et coraux profus sur fond de sable noir. De nombreux clubs locaux proposent des sorties encadrées en toute sécurité.",
     galerie: [
-      '/assets/plongee recif coralien Martinique.jpg',
-      '/assets/plongee tortue de mer martinique.jpg',
+      { url: '/assets/plongee recif coralien Martinique.jpg', alt: 'Récif corallien et biodiversité sous-marine en Martinique' },
+      { url: '/assets/plongee tortue de mer martinique.jpg', alt: 'Tortue nageant dans les fonds marins de Saint-Pierre' },
     ],
     niveauEffort: 2,
     dureeMoyenne: '3h00',
     costEstimate: 'Payant (env. 50-70€)',
-    image: '/assets/plongee Saint-Pierre.jpg',
+    image: { url: '/assets/plongee Saint-Pierre.jpg', alt: 'Plongeur explorant les fonds marins et épaves de Saint-Pierre' },
     bestTimeOfDay: 'matin',
   },
-
   {
     id: 'snorkeling-anses-arlet',
     nom: 'Snorkeling Anses d\'Arlet',
@@ -495,16 +492,16 @@ export const PLACES: Place[] = [
     description: "Spot de snorkeling de renom, réserve marine protégée. Tortues marines, poissons-perroquets, coraux. Eaux calmes et claires, accessible aux débutants.",
     descriptionLongue: "Les Anses d'Arlet abritent l'un des spots de snorkeling les plus réputés de Martinique, dans une réserve marine protégée. Les eaux calmes et claires abritent une biodiversité exceptionnelle : tortues vertes, tortues imbriquées, poissons-perroquets, poissons-chirurgiens, oursins, étoiles de mer et une grande variété de coraux. Les herbiers marins peu profonds sont le lieu de nutrition privilégié des tortues, que l'on peut observer facilement. Le spot est accessible aux débutants comme aux confirmés, avec une profondeur variant de 1 à 8 mètres. La meilleure période pour la visibilité est le matin, avant que le vent et la fréquentation ne se lèvent. Veillez à respecter cet écosystème fragile : ne touchez pas les coraux, ne nourrissez pas la faune et gardez une distance respectueuse avec les tortues.",
     galerie: [
-      '/assets/snorkeling anses d arlet 2.jpg',
-      '/assets/snorkeling anses d arlet 3.jpg',
+      { url: '/assets/snorkeling anses d arlet 2.jpg', alt: 'Observation de tortues en snorkeling aux Anses d Arlet' },
+      { url: '/assets/snorkeling anses d arlet 3.jpg', alt: 'Poissons tropicaux et fonds marins clairs en Martinique' },
     ],
     niveauEffort: 2,
     dureeMoyenne: '2h30',
     costEstimate: 'Gratuit (ou ~25€ location matériel)',
-    image: '/assets/snorkeling anses d arlet 1.jpg',
+    image: { url: '/assets/snorkeling anses d arlet 1.jpg', alt: 'Séance de snorkeling avec les tortues aux Anses d Arlet' },
     bestTimeOfDay: 'matin',
   },
-{
+  {
     id: 'kayak-ilets-robert',
     nom: 'Kayak aux îlets du Robert',
     categorie: 'Sport & Aventure',
@@ -512,14 +509,14 @@ export const PLACES: Place[] = [
     description: "Randonnée nautique en kayak à la découverte de la baie du Robert, de l'îlet Chancel et ses iguanes endémiques jusqu'aux fonds blancs du Trapèze.",
     descriptionLongue: "Au départ du Robert, la traversée en kayak ou en 'kanoa' vers les îlets est une escapade incontournable de la côte Atlantique. Le parcours mène à l'îlet Chancel, célèbre pour sa population d'iguanes des Petites Antilles (espèces protégées) et ses vestiges d'une ancienne habitation-sucrière. Après la découverte de l'îlet, la balade se poursuit vers les fonds blancs du Trapèze et de l'îlet Madame pour une pause baignade dans des eaux turquoises et cristallines. C'est une activité accessible en famille, idéale à la demi-journée ou à la journée complète avec un pique-nique.",
     galerie: [
-      '/assets/ilets robert 2.jpg',
-      '/assets/ilets robert 3.jpg',
-      '/assets/ilets robert 4.jpg',
+      { url: '/assets/ilets robert 2.jpg', alt: 'Balade en kayak dans la baie turquoise du Robert' },
+      { url: '/assets/ilets robert 3.jpg', alt: 'Iguane des Petites Antilles sur l îlet Chancel' },
+      { url: '/assets/ilets robert 4.jpg', alt: 'Fonds blancs et eau cristalline aux îlets du Robert' },
     ],
     niveauEffort: 2,
     dureeMoyenne: '3h30',
     costEstimate: 'Payant (env. 25-35€ location)',
-    image: '/assets/ilets robert 1.jpg',
+    image: { url: '/assets/ilets robert 1.jpg', alt: 'Excursion en kayak vers les fonds blancs et îlets du Robert en Martinique' },
     bestTimeOfDay: 'matin',
   },
   {
@@ -530,17 +527,17 @@ export const PLACES: Place[] = [
     description: "Excursion en mer le long de la côte Nord Caraïbe à la rencontre des dauphins sauvages et autres cétacés dans leur habitat naturel.",
     descriptionLongue: "Au départ du Carbet, de Case-Pilote ou de Fort-de-France, cette sortie en bateau vous emmène au cœur du sanctuaire Agoa, une aire marine protégée dédiée aux mammifères marins. La côte Nord Caraïbe offre des eaux profondes et paisibles idéales pour observer des bancs de dauphins tachetés, des grand dauphins et parfois des baleines ou cachalots. Les équipages et guides passionnés sensibilisent à l'approche écoresponsable et au respect de la tranquillité des animaux. L'excursion se termine souvent par une halte baignade et un rafraîchissement dans une crique abritée.",
     galerie: [
-      '/assets/dauphins 2.jpg',
-      '/assets/dauphins 3.jpg',
-      '/assets/dauphins 4.jpg',
+      { url: '/assets/dauphins 2.jpg', alt: 'Dauphins sauvages nageant dans le sanctuaire Agoa' },
+      { url: '/assets/dauphins 3.jpg', alt: 'Sortie en mer en bateau le long de la côte Nord Caraïbe' },
+      { url: '/assets/dauphins 4.jpg', alt: 'Observation respectueuse des cétacés en Martinique' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '3h30',
     costEstimate: 'Payant (env. 50-60€)',
-    image: '/assets/dauphins 1.jpg',
+    image: { url: '/assets/dauphins 1.jpg', alt: 'Dauphins sautant dans les eaux bleues de la Martinique' },
     bestTimeOfDay: 'matin',
   },
-{
+  {
     id: 'canyoning-nord',
     nom: 'Canyoning dans la Forêt Tropicale',
     categorie: 'Sport & Aventure',
@@ -548,19 +545,19 @@ export const PLACES: Place[] = [
     description: "Descente à sensations des rivières et gorges du Nord : rappels sous les cascades, sauts dans les bassins et toboggans naturels.",
     descriptionLongue: "Au cœur du massif de la Montagne Pelée et des Pitons du Carbet, le canyoning offre une immersion sportive inoubliable dans la forêt tropicale la plus sauvage de Martinique. Encadré par un moniteur diplômé, vous descendrez les cours d'eau en enchaînant rappels le long de cascades impressionnantes, sauts facultatifs dans des vasques d'eau fraîche et glissades sur des toboggans sculptés par la roche. Plusieurs parcours existent selon votre niveau, de l'initiation en famille (comme à la rivière Mitan) aux canyons plus engagés (comme l'Alma ou l'Ajoupa). Un équipement complet (combinaison, casque, baudrier) est fourni.",
     galerie: [
-      '/assets/canyoning 2.jpg',
-      '/assets/canyoning 3.jpg',
-      '/assets/canyoning 4.jpg',
+      { url: '/assets/canyoning 2.jpg', alt: 'Rappel en cascade lors d une sortie canyoning' },
+      { url: '/assets/canyoning 3.jpg', alt: 'Saut dans une vasque naturelle en forêt tropicale' },
+      { url: '/assets/canyoning 4.jpg', alt: 'Aventure sportive dans les rivières du Nord Martinique' },
     ],
     niveauEffort: 3,
     dureeMoyenne: '4h00',
     costEstimate: 'Payant (env. 55-75€)',
-    image: '/assets/canyoning 1.jpg',
+    image: { url: '/assets/canyoning 1.jpg', alt: 'Descente sportive en canyoning dans les gorges de Martinique' },
     bestTimeOfDay: 'matin',
   },
 
   // === GASTRONOMIE & DISTILLERIES ===
- {
+  {
     id: 'les-aromes-carbet',
     nom: 'Les Arômes',
     categorie: 'Gastronomie & Distilleries',
@@ -568,32 +565,32 @@ export const PLACES: Place[] = [
     description: "Cuisine bistronomique créole raffinée les pieds presque dans l'eau, mettant à l'honneur les produits locaux et les poissons frais du Carbet.",
     descriptionLongue: "Situé au Carbet sur la côte Nord Caraïbe, le restaurant Les Arômes est une référence gastronomique incontournable. Le chef y propose une cuisine inventive et savoureuse qui réinvente les classiques créoles avec une touche moderne et élégante. Poissons frais issus de la pêche locale, langoustes, carpaccios parfumés et sauces retravaillées aux épices locales se dégustent dans un cadre chaleureux et convivial. C'est l'adresse parfaite pour un déjeuner après une visite de distillerie ou un dîner au coucher du soleil face à la mer.",
     galerie: [
-      '/assets/les aromes 2.jpg',
-      '/assets/les aromes 3.jpg',
-      '/assets/les aromes 4.jpg',
+      { url: '/assets/les aromes 2.jpg', alt: 'Plat raffiné aux saveurs locales au restaurant Les Arômes' },
+      { url: '/assets/les aromes 3.jpg', alt: 'Cadre chaleureux du restaurant au Carbet' },
+      { url: '/assets/les aromes 4.jpg', alt: 'Gastronomie créole les pieds dans l eau en Martinique' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '1h45',
     costEstimate: '30-50€ / pers.',
-    image: '/assets/les aromes 1.jpg',
+    image: { url: '/assets/les aromes 1.jpg', alt: 'Le restaurant bistronomique Les Arômes au Carbet en Martinique' },
     bestTimeOfDay: 'any',
   },
-{
+  {
     id: 'le-1643-carbet',
     nom: 'Le 1643',
     categorie: 'Gastronomie & Distilleries',
     zone: 'Nord Caraïbe',
     description: "Table de charme installée dans une ancienne habitation du XVIIe siècle au Carbet, proposant une cuisine créole authentique et raffinée.",
-    descriptionLongue: "Niché dans un cadre historique remarquable au Carbet — sur le site de l'une des plus anciennes habitations de la Martinique —, Le 1643 offre une parenthèse gourmande hors du temps. Entouré d'une végétation verdoyante, le restaurant met à l'honneur les recettes traditionnelles martiniquaises sublimées : fricassee de chatrou, poissons frais de la pêche locale, gratin de christophine et desserts gourmands aux fruits du pays. Une adresse authentique et pleine de cachet pour déjeuner après une visite du Nord Caraïbe.",
+    descriptionLongue: "Niché dans un cadre historique remarquable au Carbet — sur le site de l'une des plus anciennes habitations de la Martinique —, Le 1643 offre une parenthèse gourmande hors du temps. Entouré d'une végétation verdoyante, le restaurant met à l'honneur les recettes traditionnelles martiniquaises sublimées : fricassée de chatrou, poissons frais de la pêche locale, gratin de christophine et desserts gourmands aux fruits du pays. Une adresse authentique et pleine de cachet pour déjeuner après une visite du Nord Caraïbe.",
     galerie: [
-      '/assets/le 1643 2.jpg',
-      '/assets/le 1643 3.jpg',
-      '/assets/le 1643 4.jpg',
+      { url: '/assets/le 1643 2.jpg', alt: 'Plats traditionnels créoles au restaurant Le 1643' },
+      { url: '/assets/le 1643 3.jpg', alt: 'Cadre historique et verdoyant au Carbet' },
+      { url: '/assets/le 1643 4.jpg', alt: 'Ambiance chaleureuse de l ancienne habitation' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '1h45',
     costEstimate: '30-50€ / pers.',
-    image: '/assets/le 1643 1.jpg',
+    image: { url: '/assets/le 1643 1.jpg', alt: 'Le restaurant Le 1643 dans son cadre historique au Carbet' },
     bestTimeOfDay: 'any',
   },
   {
@@ -604,14 +601,14 @@ export const PLACES: Place[] = [
     description: "Concept store culinaire et bar à poissons au cœur de Fort-de-France, célèbre pour ses ceviches, tatakis et poissons frais retravaillés.",
     descriptionLongue: "Situé en plein centre de Fort-de-France, le Galanga Fish Bar est une pépite pour les amateurs de produits de la mer. Dans une ambiance trendy et décontractée, le chef revisite les arrivages de poissons frais locaux sous forme de ceviches acidulés, tatakis fondants, tartares et crudos parfumés aux herbes et épices peyi. Une adresse idéale pour un déjeuner créatif et rafraîchissant en capitale.",
     galerie: [
-      '/assets/galanga 2.jpg',
-      '/assets/galanga 3.jpg',
-      '/assets/galanga 4.jpg',
+      { url: '/assets/galanga 2.jpg', alt: 'Ceviche et tataki de poisson frais au Galanga Fish Bar' },
+      { url: '/assets/galanga 3.jpg', alt: 'Ambiance moderne et branchée en centre-ville' },
+      { url: '/assets/galanga 4.jpg', alt: 'Cocktails et spécialités marines à Fort-de-France' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '1h30',
     costEstimate: '25-45€ / pers.',
-    image: '/assets/galanga 1.jpg',
+    image: { url: '/assets/galanga 1.jpg', alt: 'Le Galanga Fish Bar et ses plats de poissons frais à Fort-de-France' },
     bestTimeOfDay: 'midi',
   },
   {
@@ -619,17 +616,17 @@ export const PLACES: Place[] = [
     nom: 'Le Zandoli',
     categorie: 'Gastronomie & Distilleries',
     zone: 'Sud Caraïbe',
-    description: "Table gastronomique offant une vue panoramique spectaculaire sur la baie de Fort-de-France et une cuisine fusion caribéenne d'exception.",
+    description: "Table gastronomique offrant une vue panoramique spectaculaire sur la baie de Fort-de-France et une cuisine fusion caribéenne d'exception.",
     descriptionLongue: "Perché sur les hauteurs de la Pointe du Bout aux Trois-Îlets (au sein de l'Hôtel La Pagerie), Le Zandoli propose une expérience culinaire raffinée. La carte met en valeur le terroir martiniquais à travers des assiettes graphiques, élaborées à partir de produits frais du marché et rehaussées d'épices locales. La terrasse ouverte offre un panorama imprenable sur les lumières de la baie. Une adresse idéale pour une soirée romantique ou un dîner d'exception.",
     galerie: [
-      '/assets/zandoli 2.jpg',
-      '/assets/zandoli 3.jpg',
-      '/assets/zandoli 4.jpg',
+      { url: '/assets/zandoli 2.jpg', alt: 'Assiette gastronomique au restaurant Le Zandoli' },
+      { url: '/assets/zandoli 3.jpg', alt: 'Terrasse panoramique sur la baie' },
+      { url: '/assets/zandoli 4.jpg', alt: 'Dîner romantique aux Trois-Îlets' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h00',
     costEstimate: '45-70€ / pers.',
-    image: '/assets/zandoli 1.jpg',
+    image: { url: '/assets/zandoli 1.jpg', alt: 'Le restaurant gastronomique Le Zandoli aux Trois-Îlets' },
     bestTimeOfDay: 'soir',
   },
   {
@@ -640,14 +637,14 @@ export const PLACES: Place[] = [
     description: "Restaurant de plage chaleureux sur la Grande Anse d'Arlet, réputé pour ses grillades de poissons, langoustes et son ambiance décontractée.",
     descriptionLongue: "Installé directement sur le sable de la splendide plage de Grande Anse d'Arlet, Le Ti'Sable offre une expérience typique des Caraïbes. Sous ses carbets en bois, on y dégustera une cuisine de la mer généreuse : langoustes grillées, poissons du jour à la plancha, accras croustillants et cocktails fruités. En fin de semaine, le lieu s'anime avec des concerts live en bord de mer. C'est l'étape idéale pour déjeuner les pieds dans le sable entre deux sessions de snorkeling.",
     galerie: [
-      '/assets/ti sable 2.jpg',
-      '/assets/ti sable 3.jpg',
-      '/assets/ti sable 4.jpg',
+      { url: '/assets/ti sable 2.jpg', alt: 'Grillades et langoustes au restaurant Le Ti Sable' },
+      { url: '/assets/ti sable 3.jpg', alt: 'Carbets en bois sur la plage de Grande Anse d Arlet' },
+      { url: '/assets/ti sable 4.jpg', alt: 'Ambiance festive et les pieds dans le sable' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h00',
     costEstimate: '25-45€ / pers.',
-    image: '/assets/ti sable 1.jpg',
+    image: { url: '/assets/ti sable 1.jpg', alt: 'Le restaurant de plage Le Ti Sable à Grande Anse d Arlet' },
     bestTimeOfDay: 'any',
   },
   {
@@ -658,14 +655,14 @@ export const PLACES: Place[] = [
     description: "Bar-restaurant lounge les pieds dans le sable face au Rocher du Diamant. Cocktails créatifs, tapas et poissons grillés au coucher du soleil.",
     descriptionLongue: "Situé sur la plage du Diamant, Le Chill porte parfaitement son nom. C'est l'adresse branchée par excellence pour savourer un cocktail face au majestueux Rocher du Diamant. On y déguste une cuisine moderne axée sur les tapas de la mer, tiraditos, burgers maison et poissons grillés dans une ambiance lounge et décontractée. Un spot incontournable pour admirer le coucher de soleil les pieds dans le sable.",
     galerie: [
-      '/assets/le chill 2.jpg',
-      '/assets/le chill 3.jpg',
-      '/assets/le chill 4.jpg',
+      { url: '/assets/le chill 2.jpg', alt: 'Cocktails et tapas face au Rocher du Diamant' },
+      { url: '/assets/le chill 3.jpg', alt: 'Ambiance lounge du restaurant Le Chill' },
+      { url: '/assets/le chill 4.jpg', alt: 'Soirée au coucher du soleil sur la plage du Diamant' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h00',
     costEstimate: '30-50€ / pers.',
-    image: '/assets/le chill 1.jpg',
+    image: { url: '/assets/le chill 1.jpg', alt: 'Le bar-restaurant Le Chill face au Rocher du Diamant en Martinique' },
     bestTimeOfDay: 'any',
   },
   {
@@ -676,17 +673,17 @@ export const PLACES: Place[] = [
     description: "Restaurant de plage moderne et élégant à Sainte-Anne, mêlant saveurs tropicales, poissons frais et ambiance festive en bord de mer.",
     descriptionLongue: "Installé sur le littoral de Sainte-Anne, le BAO Beach offre un cadre idyllique face aux eaux turquoises du Sud. Ce beach restaurant séduit par son cadre soigné, sa décoration naturelle et sa cuisine raffinée faisant la part belle aux produits locaux : poissons grillés, bowls tropicaux, tartares et cocktails signature. C'est l'adresse parfaite pour une pause gourmande et farniente lors d'une journée de découverte des plages du Sud.",
     galerie: [
-      '/assets/bao beach 2.jpg',
-      '/assets/bao beach 3.jpg',
-      '/assets/bao beach 4.jpg',
+      { url: '/assets/bao beach 2.jpg', alt: 'Plats exotiques et cocktails au BAO Beach' },
+      { url: '/assets/bao beach 3.jpg', alt: 'Décoration tropicale du restaurant à Sainte-Anne' },
+      { url: '/assets/bao beach 4.jpg', alt: 'Ambiance de plage chic et décontractée' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h00',
     costEstimate: '30-50€ / pers.',
-    image: '/assets/bao beach 1.jpg',
+    image: { url: '/assets/bao beach 1.jpg', alt: 'Le restaurant de plage BAO Beach à Sainte-Anne en Martinique' },
     bestTimeOfDay: 'any',
   },
- {
+  {
     id: 'distillerie-braud-quenessen',
     nom: 'Distillerie Braud & Quenessen (Le Marin)',
     categorie: 'Culture & Patrimoine',
@@ -694,29 +691,29 @@ export const PLACES: Place[] = [
     description: "La plus jeune distillerie de Martinique implantée sur l'Habitation Grand Fonds au Marin, alliant tradition rhumière et modernité.",
     descriptionLongue: "Située au Marin sur le domaine historique de l'Habitation Grand Fonds, la distillerie Braud & Quenessen représente le renouveau du rhum agricole martiniquais. Inaugurée récemment, cette distillerie à taille humaine valorise les cannes à sucre cultivées sur les sols de la propriété face à la mer. La visite permet de découvrir une installation moderne et élégante, le processus d'extraction et de distillation, ainsi qu'une boutique de dégustation chaleureuse qui met en valeur leurs premières cuvées AOC.",
     galerie: [
-      '/assets/braud 2.jpg',
-      '/assets/braud 3.jpg',
+      { url: '/assets/braud 2.jpg', alt: 'Installations modernes de la distillerie Braud & Quenessen' },
+      { url: '/assets/braud 3.jpg', alt: 'Boutique et dégustation de rhum au Marin' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '1h15',
     costEstimate: 'Gratuit (dégustation offerte)',
-    image: '/assets/braud 1.jpg',
+    image: { url: '/assets/braud 1.jpg', alt: 'La distillerie Braud & Quenessen sur l Habitation Grand Fonds au Marin' },
     bestTimeOfDay: 'any',
   },
- {
+  {
     id: 'distillerie-neisson',
     nom: 'Distillerie Neisson (Le Carbet)',
     categorie: 'Culture & Patrimoine',
     zone: 'Nord Caraïbe',
     description: "Distillerie familiale réputée pour ses rhums agricoles d'exception et son savoir-faire artisanal préservé depuis 1932.",
-    descriptionLongue: "Située au Carbet, la Distillerie Neisson est l'une des dernières distilleries indépendantes et familiales de Martinique. Célèbre pour sa bouteille 'Zépol Karé', elle produit des rhums agricoles AOC parmi les plus primés au monde, notamment sa gamme bio pionnière. La visite libre permet de découvrir la colonne à distiller en cuivre, les moulins à canne en fonctionnement lors de la récolte, ainsi que les chais de vieillissement, avant de conclure par une dégustation commentée.",
+    descriptionLongue: "Située au Carbet, la Distillerie Neisson là-bas est l'une des dernières distilleries indépendantes et familiales de Martinique. Célèbre pour sa bouteille 'Zépol Karé', elle produit des rhums agricoles AOC parmi les plus primés au monde, notamment sa gamme bio pionnière. La visite libre permet de découvrir la colonne à distiller en cuivre, les moulins à canne en fonctionnement lors de la récolte, ainsi que les chais de vieillissement, avant de conclure par une dégustation commentée.",
     galerie: [
-      '/assets/neisson 2.jpg',
+      { url: '/assets/neisson 2.jpg', alt: 'Colonne à distiller en cuivre de la distillerie Neisson' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '1h30',
     costEstimate: 'Gratuit (dégustation offerte)',
-    image: '/assets/neisson 1.jpg',
+    image: { url: '/assets/neisson 1.jpg', alt: 'La célèbre distillerie familiale Neisson au Carbet en Martinique' },
     bestTimeOfDay: 'any',
   },
   {
@@ -727,17 +724,17 @@ export const PLACES: Place[] = [
     description: "Domaine majestueux au pied de la Montagne Pelée avec château, moulin à eau historique et distillerie de rhum agricole d'exception.",
     descriptionLongue: "Au pied du volcan à Saint-Pierre, l'Habitation Depaz bénéficie d'un terroir unique (sol volcanique et eau pure de montagne). Reconstruite par Victor Depaz après l'éruption de 1902, la propriété abrite un château magnifique au cœur d'un parc aux arbres centenaires, une distillerie fonctionnant à la vapeur et une roue à eau impressionnante. Le parcours de visite guidé ou libre est très complet et offre une vue spectaculaire sur la baie de Saint-Pierre.",
     galerie: [
-      '/assets/depaz 2.jpg',
-      '/assets/depaz 3.jpg',
-      '/assets/depaz 4.jpg',
+      { url: '/assets/depaz 2.jpg', alt: 'Le château Depaz et son parc au pied du volcan' },
+      { url: '/assets/depaz 3.jpg', alt: 'Moulin à eau historique de l Habitation Depaz' },
+      { url: '/assets/depaz 4.jpg', alt: 'Cuves et distillerie de rhum à Saint-Pierre' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '2h00',
     costEstimate: 'Gratuit (visite parc & dégustation)',
-    image: '/assets/depaz 1.jpg',
+    image: { url: '/assets/depaz 1.jpg', alt: 'Vue panoramique de l Habitation Depaz à Saint-Pierre en Martinique' },
     bestTimeOfDay: 'matin',
   },
-{
+  {
     id: 'distillerie-a1710',
     nom: 'Distillerie A1710 (Habitation Simon - Le François)',
     categorie: 'Culture & Patrimoine',
@@ -745,19 +742,17 @@ export const PLACES: Place[] = [
     description: "Micro-distillerie artisanale d'exception logée dans une habitation historique. Rhums pur jus de canne distillés dans un alambic en cuivre.",
     descriptionLongue: "Nichée sur le domaine historique de l'Habitation Simon au François, la distillerie A1710 incarne l'excellence et l'artisanat du rhum haut de gamme. Contrairement aux grandes colonnes industrielles, la distillation s'effectue ici de manière traditionnelle dans un petit alambic en cuivre surnommé 'Extraordinaire'. Les cannes à sucre sont coupées à la main et pressées le jour même pour préserver toute leur fraîcheur. La visite guidée permet de flâner dans la maison de maître du XVIIIe siècle, de découvrir les chais de vieillissement et de déguster des cuvées rares aux flacons faits à la main.",
     galerie: [
-      '/assets/a1710 2.jpg',
-      '/assets/a1710 3.jpg',
-      '/assets/a1710 4.jpg',
-      '/assets/a1710 5.jpg',
+      { url: '/assets/a1710 2.jpg', alt: 'Alambic en cuivre de la micro-distillerie A1710' },
+      { url: '/assets/a1710 3.jpg', alt: 'Habitation Simon et ses chais de vieillissement' },
+      { url: '/assets/a1710 4.jpg', alt: 'Bouteilles et flacons d exception de rhum' },
+      { url: '/assets/a1710 5.jpg', alt: 'Dégustation artisanale à la distillerie A1710 au François' },
     ],
     niveauEffort: 1,
     dureeMoyenne: '1h30',
     costEstimate: 'Payant (env. 10-15€ visite & dégustation)',
-    image: '/assets/a1710 1.jpg',
+    image: { url: '/assets/a1710 1.jpg', alt: 'L Habitation Simon et la distillerie A1710 en Martinique' },
     bestTimeOfDay: 'any',
   },
- 
- 
 ];
 
 export const ZONE_DISTANCES: Record<Zone, Record<Zone, number>> = {

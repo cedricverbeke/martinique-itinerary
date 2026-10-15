@@ -17,6 +17,11 @@ const LUNCH_RECOMMENDATIONS: Record<Zone, { rec: string; type: string; cout: str
     { rec: 'Snack du port de Le Robert', type: 'Snack local', cout: '14€' },
     { rec: 'Table gourmande au Lorrain', type: 'Restaurant local', cout: '26€' },
   ],
+  'Sud Atlantique': [
+    { rec: 'Table créole à Sainte-Anne', type: 'Restaurant créole', cout: '25€' },
+    { rec: 'Snack de plage à l’Anse Michel', type: 'Snack local', cout: '15€' },
+    { rec: 'Restaurant du François, cuisine locale', type: 'Restaurant local', cout: '28€' },
+  ],
   'Centre': [
     { rec: 'Restaurant Le Mémorial à Trois-Îlets', type: 'Restaurant créole', cout: '30€' },
     { rec: 'Snack du marché de Fort-de-France', type: 'Snack local', cout: '12€' },
@@ -36,6 +41,10 @@ const DINNER_RECOMMENDATIONS: Record<Zone, { rec: string; cout: string }[]> = {
   'Nord Atlantique': [
     { rec: 'Tartane Village, dîner de fruits de mer', cout: '30€' },
     { rec: 'Restaurant Le Carbet, terrasse face à l\'Atlantique', cout: '28€' },
+  ],
+  'Sud Atlantique': [
+    { rec: 'Dîner créole à Sainte-Anne', cout: '30€' },
+    { rec: 'Table du François, spécialités de la mer', cout: '32€' },
   ],
   'Centre': [
     { rec: 'Le Mémorial aux Trois-Îlets, grande table créole', cout: '35€' },
@@ -219,6 +228,7 @@ function getDayTitle(zone: Zone, placesInDay: Place[], dayNum: number): string {
     'Nord Caraïbe': 'Côte Caraïbe du Nord',
     'Sud Caraïbe': 'Côte Sud Caraïbe',
     'Nord Atlantique': 'Presqu\'île Atlantique',
+    'Sud Atlantique': 'Côte Atlantique du Sud',
     'Centre': 'Cœur de la Martinique',
   };
   const mainActivity = placesInDay[0]?.nom || 'Découverte';
