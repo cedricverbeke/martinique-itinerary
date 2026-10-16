@@ -15,9 +15,9 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          # On construit l'URL dynamiquement grâce au secret URL
           FULL_URL="${SUPABASE_URL}/functions/v1/generate-itinerary"
           
+          # On fait un appel simple (on autorise les codes 2xx, 4xx car une 400/422 réveille quand même la fonction)
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
             "$FULL_URL" \
             -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
@@ -26,9 +26,10 @@ jobs:
 
           echo "Code de retour HTTP : $RESPONSE"
 
+          # On considère que le réveil a fonctionné tant que ce n'est pas une erreur serveur (5xx)
           if [ "$RESPONSE" -ge 500 ]; then
             echo "Erreur serveur critique sur l Edge Function."
             exit 1
           else
-            echo "Edge Function contactée et réveillée avec succès !"
+            echo "Edge Function contactée et réveillée avec succès (Code $RESPONSE) !"
           fi
