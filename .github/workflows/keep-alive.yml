@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Call Supabase Edge Function
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
           FULL_URL="${SUPABASE_URL}/functions/v1/generate-itinerary"
