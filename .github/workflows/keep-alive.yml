@@ -13,22 +13,41 @@ jobs:
       - name: Call Supabase Edge Function
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: |
           FULL_URL="${SUPABASE_URL}/functions/v1/generate-itinerary"
           
-          # On fait un appel simple (on autorise les codes 2xx, 4xx car une 400/422 réveille quand même la fonction)
+          # Payload minimal respectant l'interface RequestBody de votre Edge Function
+          PAYLOAD='{
+            "places": [],
+            "settings": {
+              "hebergement": "KeepAlive",
+              "dateDebut": "2026-10-22",
+              "dateFin": "2026-10-23",
+              "heureDebut": "09:00",
+              "duree": 1,
+              "modeDate": "jours",
+              "groupe": "Solo",
+              "transport": "Voiture",
+              "rythme": 3,
+              "effort": 3,
+              "orientation": 3,
+              "restauration": 3
+            }
+          }'
+
+          # On fait l'appel POST avec le payload structuré
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
             "$FULL_URL" \
             -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
             -H "Content-Type: application/json" \
-            -d "{}")
+            -d "$PAYLOAD")
 
           echo "Code de retour HTTP : $RESPONSE"
 
           # On considère que le réveil a fonctionné tant que ce n'est pas une erreur serveur (5xx)
           if [ "$RESPONSE" -ge 500 ]; then
-            echo "Erreur serveur critique sur l Edge Function."
+            echo "Erreur serveur critique sur l'Edge Function."
             exit 1
           else
             echo "Edge Function contactée et réveillée avec succès (Code $RESPONSE) !"
